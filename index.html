@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Doral Sushi - Menú, promociones y pedidos por WhatsApp." name="description"/>
+<meta content="#050505" name="theme-color"/>
+<title>Doral Sushi | Menú y Promociones</title>
+<style>
+:root{--negro:#050505;--negro2:#0b0b0b;--dorado:#d9a52e;--dorado-claro:#f5cf63;--blanco:#f5f5f5;--gris:#aaa;--verde:#25D366;--borde:rgba(217,165,46,.30)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--negro);color:var(--blanco);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+header{position:sticky;top:0;z-index:1000;background:rgba(5,5,5,.96);border-bottom:1px solid var(--borde);backdrop-filter:blur(12px)}
+.navbar{width:min(1180px,100%);min-height:76px;margin:auto;padding:8px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo-header img{width:82px;height:58px;object-fit:contain}
+.menu-navegacion{display:flex;gap:26px}
+.menu-navegacion a{font-size:14px;letter-spacing:1px}
+.menu-navegacion a:hover{color:var(--dorado-claro)}
+.header-acciones{display:flex;align-items:center;gap:10px}
+.boton-whatsapp-header,.boton-carrito{border:1px solid var(--dorado);color:var(--dorado-claro);padding:10px 15px;border-radius:25px;font-weight:bold;cursor:pointer;background:transparent}
+.boton-whatsapp-header:hover,.boton-carrito:hover{background:var(--dorado);color:#000}
+.boton-carrito{position:relative}
+.contador{position:absolute;top:-8px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--dorado-claro);color:#000;display:grid;place-items:center;font-size:12px}
+.hero{min-height:calc(100vh - 76px);display:flex;align-items:center;justify-content:center;text-align:center;padding:55px 20px;background:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.88)),url("assets/img-2f3a7fad6c13.webp") center/cover}
+.hero-contenido{width:100%;max-width:900px}
+.logo-principal{width:min(310px,70vw);margin:0 auto 20px;filter:drop-shadow(0 0 25px rgba(217,165,46,.25))}
+.hero h1{font-family:Georgia,serif;font-size:clamp(42px,8vw,78px);text-transform:uppercase;letter-spacing:5px;color:var(--dorado-claro)}
+.hero h2{margin:10px 0 28px;font-size:clamp(24px,4vw,38px);font-weight:400}
+.botones{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.boton{display:inline-block;padding:13px 24px;border-radius:6px;font-weight:bold;border:1px solid var(--dorado);cursor:pointer}
+.boton-dorado{background:linear-gradient(135deg,#9a6b12,var(--dorado-claro));color:#050505;border:0}
+.boton-contorno{color:var(--dorado-claro);background:transparent}
+.seccion{padding:75px 20px}
+.seccion-alternativa{background:var(--negro2)}
+.contenedor{width:min(1150px,100%);margin:auto}
+.titulo-seccion{text-align:center;margin-bottom:38px}
+.titulo-seccion h2{font-family:Georgia,serif;font-size:clamp(31px,5vw,47px);color:var(--dorado-claro)}
+.linea-dorada{width:65px;height:2px;background:var(--dorado);margin:13px auto}
+.grid-promociones{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.promo-card{background:#090909;border:1px solid var(--borde);border-radius:12px;overflow:hidden}
+.promo-card img{width:100%;height:auto}
+.promo-info{padding:16px 18px 18px}
+.promo-info h3{color:var(--dorado-claro);margin-bottom:7px}
+.promo-info p{color:var(--gris);font-size:14px;line-height:1.5}
+.grid-menu{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.producto{background:#090909;border:1px solid var(--borde);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.producto-imagen{background:#111}
+.producto-imagen img{width:100%;height:auto}
+.producto-contenido{padding:18px;display:flex;flex-direction:column;flex:1}
+.producto-contenido h3{color:var(--dorado-claro);font-size:21px;margin-bottom:7px}
+.producto-contenido p{color:var(--gris);line-height:1.5;min-height:44px}
+.producto-abajo{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px}
+.precio{color:var(--dorado-claro);font-size:22px;font-weight:bold}
+.acciones-producto{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn-add,.btn-pedir{border-radius:5px;padding:10px 13px;font-weight:bold;cursor:pointer}
+.btn-add{border:1px solid var(--dorado);color:var(--dorado-claro);background:transparent}
+.btn-pedir{border:0;background:var(--dorado);color:#000}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.contacto{background:#090909;border:1px solid var(--borde);border-radius:12px;padding:28px}
+.contacto h3{color:var(--dorado-claro);margin-bottom:10px}
+.contacto p{color:var(--gris);line-height:1.7}
+.datos-contacto{margin-top:16px;display:grid;gap:8px}
+.datos-contacto strong{color:var(--dorado-claro)}
+footer{padding:32px 20px;text-align:center;background:#030303;border-top:1px solid var(--borde)}
+footer strong{color:var(--dorado-claro);font-size:20px}
+footer p{color:#777;margin-top:8px;font-size:13px}
+.whatsapp-flotante{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--verde);color:#fff;font-size:27px;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.5)}
+.carrito-panel{position:fixed;top:0;right:-430px;width:min(430px,100%);height:100vh;background:#080808;border-left:1px solid var(--borde);z-index:2000;display:flex;flex-direction:column;transition:right .3s ease;box-shadow:-15px 0 45px rgba(0,0,0,.45)}
+.carrito-panel.abierto{right:0}
+.carrito-cabecera{padding:18px 20px;border-bottom:1px solid var(--borde);display:flex;justify-content:space-between;align-items:center}
+.carrito-cabecera h3{color:var(--dorado-claro)}
+.cerrar-carrito{border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer}
+.carrito-lista{flex:1;overflow:auto;padding:16px 20px}
+.carrito-vacio{text-align:center;color:var(--gris);padding:50px 15px}
+.item-carrito{border-bottom:1px solid rgba(255,255,255,.08);padding:14px 0;display:grid;grid-template-columns:1fr auto;gap:10px}
+.item-carrito strong{color:var(--dorado-claro)}
+.item-precio{color:#fff;margin-top:5px;font-size:14px}
+.item-controles{display:flex;align-items:center;gap:7px;margin-top:9px}
+.item-controles button{width:27px;height:27px;border:1px solid var(--dorado);background:transparent;color:var(--dorado-claro);border-radius:4px;cursor:pointer}
+.item-eliminar{color:#aaa!important;border-color:#555!important;width:auto!important;padding:0 7px}
+.carrito-pie{padding:18px 20px;border-top:1px solid var(--borde)}
+.total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;margin-bottom:14px}
+.total span:last-child{color:var(--dorado-claro)}
+.btn-checkout{width:100%;padding:14px;border:0;border-radius:5px;background:var(--verde);color:#fff;font-weight:bold;cursor:pointer}
+.btn-checkout:disabled{opacity:.45;cursor:not-allowed}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1500;display:none}
+.overlay.visible{display:block}
+.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);background:#111;border:1px solid var(--dorado);color:#fff;padding:12px 18px;border-radius:6px;opacity:0;pointer-events:none;transition:.25s;z-index:3000}
+.toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:900px){.menu-navegacion{display:none}.grid-menu{grid-template-columns:repeat(2,1fr)}.grid-promociones{grid-template-columns:1fr}.contacto-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.navbar{padding:8px 13px}.boton-whatsapp-header{display:none}.logo-header img{width:68px;height:52px}.seccion{padding:55px 14px}.hero{padding:45px 15px}.logo-principal{width:230px}.grid-menu{grid-template-columns:1fr}.producto-abajo{align-items:flex-start;flex-direction:column}.acciones-producto{justify-content:flex-start;width:100%}.btn-add,.btn-pedir{flex:1}.whatsapp-flotante{right:15px;bottom:15px}}
+
+/* ===== FONDO FIJO DORAL SUSHI ===== */
+html, body { min-height: 100%; }
+body {
+  position: relative;
+  background: #080607;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(18, 7, 9, 0.76), rgba(5, 4, 5, 0.84)),
+    url("assets/img-36e7fec787a8.webp") center center / cover no-repeat;
+  background-attachment: fixed;
+  pointer-events: none;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0,0,0,0.10);
+  pointer-events: none;
+}
+/* El contenido se desplaza; el fondo permanece quieto */
+main, section, footer { position: relative; }
+.hero {
+  background: transparent !important;
+  min-height: calc(100vh - 76px);
+}
+.seccion {
+  background: rgba(5,5,5,.72);
+  backdrop-filter: blur(2px);
+}
+.seccion-alternativa {
+  background: rgba(8,8,8,.78);
+}
+footer {
+  background: rgba(5,5,5,.88) !important;
+}
+
+
+.frase-slogan{
+  margin: 8px 0 22px;
+  color: #f5cf63;
+  font-size: clamp(20px, 3vw, 34px);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.75);
+}
+
+
+@media (max-width: 700px){
+  body::before{
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+
+/* ===== AJUSTES SOLICITADOS ===== */
+.menu-navegacion{gap:30px;align-items:center}
+.menu-navegacion a{font-size:18px;letter-spacing:1.2px;font-weight:700;padding:10px 4px}
+.logo-principal{border-radius:50%;opacity:.90;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(circle at center, #000 52%, rgba(0,0,0,.95) 62%, transparent 78%);mask-image:radial-gradient(circle at center, #000 52%, rgba(0,0,0,.95) 62%, transparent 78%);filter:drop-shadow(0 10px 28px rgba(0,0,0,.45));}
+.promo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.promo-grid .promo-card{height:100%;margin-bottom:0!important}
+@media (max-width:900px){.menu-navegacion{gap:16px}.menu-navegacion a{font-size:16px}.logo-principal{max-width:360px}}
+@media (max-width:700px){.menu-navegacion{gap:10px}.menu-navegacion a{font-size:14px;padding:7px 2px}.logo-principal{max-width:300px}.promo-grid{grid-template-columns:1fr}}
+
+/* ===== AJUSTES DORAL SUSHI ===== */
+.navbar{
+  justify-content:flex-start;
+  gap:14px;
+}
+.logo-header{flex:0 0 auto;}
+.logo-header img{width:82px;height:58px;object-fit:contain;}
+.busqueda-header{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:var(--dorado-claro);
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  margin-right:2px;
+}
+.busqueda-header .pensando{font-size:17px;line-height:1;}
+.menu-navegacion{flex:1;justify-content:center;gap:24px;}
+.menu-navegacion a{font-size:14px;letter-spacing:1px;}
+.header-acciones{margin-left:auto;}
+.boton-whatsapp-header{
+  position:relative;
+  overflow:hidden;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.boton-whatsapp-header::before{
+  content:"";
+  position:absolute;
+  width:38px;
+  height:38px;
+  border:2px solid rgba(37,211,102,.48);
+  border-radius:50%;
+  right:-5px;
+  top:50%;
+  transform:translateY(-50%);
+  box-shadow:0 0 0 5px rgba(37,211,102,.08),inset 0 0 0 2px rgba(37,211,102,.16);
+  opacity:.9;
+}
+.boton-whatsapp-header::after{
+  content:"☎";
+  position:absolute;
+  right:7px;
+  top:50%;
+  transform:translateY(-53%);
+  color:#25d366;
+  font-size:17px;
+  line-height:1;
+  opacity:.95;
+}
+.boton-whatsapp-header{padding-right:43px;}
+.boton-carrito{
+  position:relative;
+  overflow:visible;
+  border-color:#d9a52e;
+  color:#171006;
+  background:linear-gradient(135deg,#a86f0f 0%,#d9a52e 38%,#f4d36b 62%,#bd8017 100%);
+  box-shadow:0 5px 18px rgba(217,165,46,.22),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.boton-carrito:hover{background:linear-gradient(135deg,#bd8017,#f5cf63,#d9a52e);color:#000;}
+.boton-carrito .pedir-label{font-weight:800;letter-spacing:.3px;}
+.boton-carrito .contador{background:#090909;color:var(--dorado-claro);border:1px solid var(--dorado-claro);}
+.hero-contenido{width:min(1050px,100%);}
+.hero-marca{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  margin:0 auto 25px;
+  max-width:850px;
+  text-align:left;
+}
+.logo-principal{
+  width:min(220px,32vw);
+  height:auto;
+  flex:0 0 auto;
+  margin:0;
+}
+.hero-marca-texto{min-width:0;}
+.hero-marca-texto h1{
+  margin:0 0 6px;
+  font-family:Georgia,serif;
+  font-size:clamp(34px,5vw,58px);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:var(--dorado-claro);
+}
+.hero-marca-texto .frase-slogan{
+  margin:0;
+  color:#f5cf63;
+  font-size:clamp(17px,2.2vw,27px);
+  font-weight:600;
+  font-style:italic;
+  letter-spacing:.8px;
+}
+.titulo-seccion h2{display:flex;align-items:center;justify-content:center;gap:9px;}
+.titulo-icono{font-size:.68em;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45));}
+.titulo-menu .titulo-icono{font-size:.62em;}
+.titulo-promociones .titulo-icono{font-size:.60em;}
+@media (max-width:900px){
+  .busqueda-header{display:none;}
+  .menu-navegacion{gap:15px;}
+  .menu-navegacion a{font-size:13px;}
+}
+@media (max-width:700px){
+  .navbar{gap:8px;padding:8px 10px;}
+  .logo-header img{width:68px;height:52px;}
+  .menu-navegacion{gap:10px;}
+  .menu-navegacion a{font-size:11px;letter-spacing:.4px;}
+  .boton-whatsapp-header{font-size:0;padding:9px 32px 9px 10px;}
+  .boton-carrito{font-size:0;padding:9px 13px;}
+  .boton-carrito .pedir-label{font-size:0;}
+  .boton-carrito::after{content:"Pedir";font-size:12px;font-weight:800;}
+  .hero-marca{gap:15px;justify-content:flex-start;text-align:left;}
+  .logo-principal{width:145px;}
+  .hero-marca-texto h1{font-size:32px;letter-spacing:2px;}
+  .hero-marca-texto .frase-slogan{font-size:16px;}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="navbar">
+<a class="logo-header" href="#inicio"><img alt="Doral Sushi" decoding="async" loading="eager" src="assets/img-78eff9b19846.webp"/></a><div class="busqueda-header">¿Estás buscando <span aria-hidden="true" class="pensando">🤔</span>?</div>
+<nav class="menu-navegacion">
+<a href="#inicio">Inicio</a><a href="#menu">Menú</a><a href="#promociones">Promociones</a><a href="#contacto">Contacto</a>
+</nav>
+<div class="header-acciones">
+<a class="boton-whatsapp-header" href="https://wa.me/56922052735" rel="noopener" target="_blank">WhatsApp</a>
+<button aria-label="Abrir pedido" class="boton-carrito" id="abrirCarrito" type="button"><span aria-hidden="true">🛒</span><span class="pedir-label">Pedir</span><span class="contador" id="contadorCarrito">0</span></button>
+</div>
+</div>
+</header>
+<main>
+<section class="hero" id="inicio">
+<div class="hero-contenido"><div class="hero-marca"><img alt="Doral Sushi" class="logo-principal" decoding="async" loading="lazy" src="assets/img-78eff9b19846.webp"/><div class="hero-marca-texto"><h1>Doral Sushi</h1><p class="frase-slogan">Sushi con Amor y experiencia</p></div></div>
+
+
+
+<h2>Menú &amp; Promociones</h2>
+<div class="botones">
+<a class="boton boton-dorado" href="#menu">Ver menú</a>
+<a class="boton boton-contorno" href="https://wa.me/56922052735?text=Hola%20Doral%20Sushi%2C%20quiero%20hacer%20un%20pedido." rel="noopener" target="_blank">Pedir por WhatsApp</a>
+</div>
+</div>
+</section>
+
+<section class="seccion" id="menu">
+<div class="contenedor">
+<div class="titulo-seccion titulo-menu"><h2>Menú<span aria-hidden="true" class="titulo-icono">🦐</span></h2><div class="linea-dorada"></div></div>
+<div class="grid-menu">
+<article class="producto">
+<div class="producto-imagen"><img alt="3 Hand Roll Doral" decoding="async" loading="lazy" src="assets/img-a6403fe4fef7.webp"/></div>
+<div class="producto-contenido">
+<h3>3 Hand Roll Doral</h3><p>Base: arroz + queso + cebollín. Ingredientes a elección: pollo, kanikama, camarón o vegetales.</p>
+<div class="producto-abajo"><span class="precio">$6.500</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="handroll3" data-nombre="3 Hand Roll Doral" data-precio="6500" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="3 Hand Roll Doral" data-precio="6500" type="button">Pedir</button>
+</div></div></div></article><article class="producto">
+<div class="producto-imagen"><img alt="Fried Doral · 40 piezas" decoding="async" loading="lazy" src="assets/img-27d7c9a33335.webp"/></div>
+<div class="producto-contenido">
+<h3>Fried Doral · 40 piezas</h3><p>20 fritos + 20 envueltos.</p>
+<div class="producto-abajo"><span class="precio">$8.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="fried40" data-nombre="Fried Doral · 40 piezas" data-precio="8990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Fried Doral · 40 piezas" data-precio="8990" type="button">Pedir</button>
+</div></div></div></article><article class="producto">
+<div class="producto-imagen"><img alt="Doral Boom · 50 piezas" decoding="async" loading="lazy" src="assets/img-40a5fe186918.webp"/></div>
+<div class="producto-contenido">
+<h3>Doral Boom · 50 piezas</h3><p>20 fritos + 30 envueltos.</p>
+<div class="producto-abajo"><span class="precio">$11.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="boom50" data-nombre="Doral Boom · 50 piezas" data-precio="11990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Doral Boom · 50 piezas" data-precio="11990" type="button">Pedir</button>
+</div></div></div></article><article class="producto">
+<div class="producto-imagen"><img alt="Doral Fried Chicken · 60 piezas" decoding="async" loading="lazy" src="assets/img-ccde037a8e91.webp"/></div>
+<div class="producto-contenido">
+<h3>Doral Fried Chicken · 60 piezas</h3><p>30 fritos + 30 envueltos. Cobertura a escoger.</p>
+<div class="producto-abajo"><span class="precio">$13.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="chicken60" data-nombre="Doral Fried Chicken · 60 piezas" data-precio="13990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Doral Fried Chicken · 60 piezas" data-precio="13990" type="button">Pedir</button>
+</div></div></div></article><article class="producto">
+<div class="producto-imagen"><img alt="Doral Aura · 70 piezas" decoding="async" loading="lazy" src="assets/img-1b411ed97180.webp"/></div>
+<div class="producto-contenido">
+<h3>Doral Aura · 70 piezas</h3><p>70 piezas + 2 Crispy Ball de regalo.</p>
+<div class="producto-abajo"><span class="precio">$9.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="aura70" data-nombre="Doral Aura · 70 piezas" data-precio="9990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Doral Aura · 70 piezas" data-precio="9990" type="button">Pedir</button>
+</div></div></div></article><article class="producto">
+<div class="producto-imagen"><img alt="Promo Regalón" decoding="async" loading="lazy" src="assets/img-5f7aabe9ff5b.webp"/></div>
+<div class="producto-contenido">
+<h3>Promo Regalón</h3><p>1 Sushiburger + 2 HandRolls + 3 Crispy Ball.</p>
+<div class="producto-abajo"><span class="precio">$9.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="regalon" data-nombre="Promo Regalón" data-precio="9990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Promo Regalón" data-precio="9990" type="button">Pedir</button>
+</div></div></div></article>
+</div>
+</div>
+</section><section class="seccion seccion-alternativa" id="promociones">
+<div class="contenedor">
+<div class="titulo-seccion titulo-promociones"><h2>Promociones<span aria-hidden="true" class="titulo-icono">👑</span><span aria-hidden="true" class="titulo-icono">🐟</span></h2><div class="linea-dorada"></div></div>
+<div class="promo-grid">
+<article class="promo-card">
+<div class="producto-imagen"><img alt="3 Hand Roll Doral" decoding="async" loading="lazy" src="assets/img-a6403fe4fef7.webp"/></div>
+<div class="producto-contenido">
+<h3>3 Hand Roll Doral</h3><p>3 Hand Rolls · Base: arroz + queso + cebollín.</p>
+<div class="producto-abajo"><span class="precio">$6.500</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="handroll3" data-nombre="3 Hand Roll Doral" data-precio="6500" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="3 Hand Roll Doral" data-precio="6500" type="button">Pedir</button>
+</div></div></div></article>
+<article class="promo-card">
+<div class="producto-imagen"><img alt="Doral Aura · 70 piezas" decoding="async" loading="lazy" src="assets/img-1b411ed97180.webp"/></div>
+<div class="producto-contenido">
+<h3>Doral Aura · 70 piezas</h3><p>70 piezas + 2 Crispy Ball de regalo.</p>
+<div class="producto-abajo"><span class="precio">$9.990</span>
+<div class="acciones-producto">
+<button class="btn-add" data-id="aura70" data-nombre="Doral Aura · 70 piezas" data-precio="9990" type="button">Añadir</button>
+<button class="btn-pedir" data-pedir="Doral Aura · 70 piezas" data-precio="9990" type="button">Pedir</button>
+</div></div></div></article>
+</div>
+</div>
+</section>
+<section class="seccion seccion-alternativa" id="contacto">
+<div class="contenedor">
+<div class="titulo-seccion"><h2>Delivery y Contacto</h2><div class="linea-dorada"></div></div>
+<div class="contacto-grid">
+<div class="contacto"><h3>Pedidos por WhatsApp</h3><p>Haz tu pedido directo o usa el carrito para pedir varios productos.</p>
+<div class="datos-contacto"><div><strong>WhatsApp:</strong> +56 9 2205 2735</div><div><strong>Delivery:</strong> Gratis en zona</div><div><strong>Horario:</strong> 6 PM y 9 PM</div></div><br/>
+<a class="boton boton-dorado" href="https://wa.me/56922052735?text=Hola%20Doral%20Sushi%2C%20quiero%20hacer%20un%20pedido." target="_blank">Pedir por WhatsApp</a></div>
+<div class="contacto"><h3>Tu carrito</h3><p>Agrega productos, modifica cantidades y envía el pedido completo por WhatsApp.</p><br/><button class="boton boton-contorno" id="abrirCarritoContacto">Ver carrito</button></div>
+</div>
+</div>
+</section>
+</main>
+<footer><strong>Doral Sushi</strong><p>© 2026 Doral Sushi. Todos los derechos reservados.</p></footer>
+<a aria-label="Pedir por WhatsApp" class="whatsapp-flotante" href="https://wa.me/56922052735?text=Hola%20Doral%20Sushi%2C%20quiero%20hacer%20un%20pedido." target="_blank">☎</a>
+<div class="overlay" id="overlay"></div>
+<aside class="carrito-panel" id="carritoPanel">
+<div class="carrito-cabecera"><h3>🛒 Tu carrito</h3><button class="cerrar-carrito" id="cerrarCarrito">×</button></div>
+<div class="carrito-lista" id="carritoLista"></div>
+<div class="carrito-pie"><div class="total"><span>Total</span><span id="totalCarrito">$0</span></div><button class="btn-checkout" disabled="" id="checkout">Enviar pedido por WhatsApp</button></div>
+</aside>
+<div class="toast" id="toast">Producto añadido al carrito</div>
+<script>
+const WHATSAPP="56922052735";
+let carrito=[];try{const guardado=localStorage.getItem("doralSushiCarrito");carrito=guardado?JSON.parse(guardado):[];if(!Array.isArray(carrito))carrito=[];}catch(e){carrito=[];}
+const panel=document.getElementById("carritoPanel"),overlay=document.getElementById("overlay"),lista=document.getElementById("carritoLista"),totalEl=document.getElementById("totalCarrito"),contador=document.getElementById("contadorCarrito"),checkout=document.getElementById("checkout"),toast=document.getElementById("toast");
+function formatoCLP(n){return "$"+Number(n).toLocaleString("es-CL")}
+function guardar(){localStorage.setItem("doralSushiCarrito",JSON.stringify(carrito));renderCarrito()}
+function mostrarCarrito(){panel.classList.add("abierto");overlay.classList.add("visible")}
+function ocultarCarrito(){panel.classList.remove("abierto");overlay.classList.remove("visible")}
+function mostrarToast(t){toast.textContent=t;toast.classList.add("visible");setTimeout(()=>toast.classList.remove("visible"),1800)}
+function agregar(id,nombre,precio){let x=carrito.find(i=>i.id===id);x?x.cantidad++:carrito.push({id,nombre,precio:Number(precio),cantidad:1});guardar();mostrarToast("Producto añadido al carrito")}
+function cambiarCantidad(id,d){let x=carrito.find(i=>i.id===id);if(!x)return;x.cantidad+=d;if(x.cantidad<=0)carrito=carrito.filter(i=>i.id!==id);guardar()}
+function eliminar(id){carrito=carrito.filter(i=>i.id!==id);guardar()}
+function renderCarrito(){
+contador.textContent=carrito.reduce((s,i)=>s+i.cantidad,0);
+if(!carrito.length){lista.innerHTML='<div class="carrito-vacio">Tu carrito está vacío.<br><br>Agrega productos desde el menú.</div>';totalEl.textContent="$0";checkout.disabled=true;return}
+let total=0;
+lista.innerHTML=carrito.map(i=>{let sub=i.precio*i.cantidad;total+=sub;return `<div class="item-carrito"><div><strong>${i.nombre}</strong><div class="item-precio">${formatoCLP(i.precio)} c/u</div><div class="item-controles"><button onclick="cambiarCantidad('${i.id}',-1)">−</button><span>${i.cantidad}</span><button onclick="cambiarCantidad('${i.id}',1)">+</button><button class="item-eliminar" onclick="eliminar('${i.id}')">Eliminar</button></div></div><strong>${formatoCLP(sub)}</strong></div>`}).join("");
+totalEl.textContent=formatoCLP(total);checkout.disabled=false;
+}
+function pedirDirecto(nombre,precio){const m=`Hola Doral Sushi 👋\n\nQuiero pedir:\n• ${nombre} — ${formatoCLP(precio)}\n\n¿Me confirman disponibilidad?`;window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`,"_blank")}
+function enviarCarrito(){if(!carrito.length)return;let total=0;const lineas=carrito.map(i=>{let sub=i.precio*i.cantidad;total+=sub;return `• ${i.cantidad} x ${i.nombre} — ${formatoCLP(sub)}`});const m=`Hola Doral Sushi 👋\n\nQuiero realizar este pedido:\n\n${lineas.join("\n")}\n\nTOTAL: ${formatoCLP(total)}\n\n¿Me confirman disponibilidad y los datos para el delivery?`;window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(m)}`,"_blank")}
+document.getElementById("abrirCarrito").onclick=mostrarCarrito;
+document.getElementById("abrirCarritoContacto").onclick=mostrarCarrito;
+document.getElementById("cerrarCarrito").onclick=ocultarCarrito;
+overlay.onclick=ocultarCarrito;
+checkout.onclick=enviarCarrito;
+document.querySelectorAll(".btn-add").forEach(b=>b.onclick=()=>agregar(b.dataset.id,b.dataset.nombre,b.dataset.precio));
+document.querySelectorAll(".btn-pedir").forEach(b=>b.onclick=()=>pedirDirecto(b.dataset.pedir,b.dataset.precio));
+renderCarrito();
+</script>
+</body>
+</html>
